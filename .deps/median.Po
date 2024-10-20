@@ -1,0 +1,40 @@
+median.o: median.c \
+  /Users/davindersingh/mywork/postgres/build/include/server/postgres.h \
+  /Users/davindersingh/mywork/postgres/build/include/server/c.h \
+  /Users/davindersingh/mywork/postgres/build/include/server/postgres_ext.h \
+  /Users/davindersingh/mywork/postgres/build/include/server/pg_config_ext.h \
+  /Users/davindersingh/mywork/postgres/build/include/server/pg_config.h \
+  /Users/davindersingh/mywork/postgres/build/include/server/pg_config_manual.h \
+  /Users/davindersingh/mywork/postgres/build/include/server/pg_config_os.h \
+  /Users/davindersingh/mywork/postgres/build/include/server/port.h \
+  /Users/davindersingh/mywork/postgres/build/include/server/utils/elog.h \
+  /Users/davindersingh/mywork/postgres/build/include/server/lib/stringinfo.h \
+  /Users/davindersingh/mywork/postgres/build/include/server/utils/errcodes.h \
+  /Users/davindersingh/mywork/postgres/build/include/server/utils/palloc.h \
+  /Users/davindersingh/mywork/postgres/build/include/server/fmgr.h
+
+/Users/davindersingh/mywork/postgres/build/include/server/postgres.h:
+
+/Users/davindersingh/mywork/postgres/build/include/server/c.h:
+
+/Users/davindersingh/mywork/postgres/build/include/server/postgres_ext.h:
+
+/Users/davindersingh/mywork/postgres/build/include/server/pg_config_ext.h:
+
+/Users/davindersingh/mywork/postgres/build/include/server/pg_config.h:
+
+/Users/davindersingh/mywork/postgres/build/include/server/pg_config_manual.h:
+
+/Users/davindersingh/mywork/postgres/build/include/server/pg_config_os.h:
+
+/Users/davindersingh/mywork/postgres/build/include/server/port.h:
+
+/Users/davindersingh/mywork/postgres/build/include/server/utils/elog.h:
+
+/Users/davindersingh/mywork/postgres/build/include/server/lib/stringinfo.h:
+
+/Users/davindersingh/mywork/postgres/build/include/server/utils/errcodes.h:
+
+/Users/davindersingh/mywork/postgres/build/include/server/utils/palloc.h:
+
+/Users/davindersingh/mywork/postgres/build/include/server/fmgr.h:

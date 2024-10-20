@@ -1,0 +1,19 @@
+2024-09-24 00:47:51.842 IST [22913] LOG:  starting PostgreSQL 12.20 on x86_64-apple-darwin23.6.0, compiled by Apple clang version 16.0.0 (clang-1600.0.26.3), 64-bit
+2024-09-24 00:47:51.843 IST [22913] LOG:  listening on Unix socket "/tmp/pg_regress-MYWy7l/.s.PGSQL.54484"
+2024-09-24 00:47:51.869 IST [22919] LOG:  database system was shut down at 2024-09-24 00:47:51 IST
+2024-09-24 00:47:51.876 IST [22913] LOG:  database system is ready to accept connections
+2024-09-24 00:47:52.904 IST [22920] LOG:  checkpoint starting: immediate force wait flush-all
+2024-09-24 00:47:52.908 IST [22920] LOG:  checkpoint complete: wrote 3 buffers (0.0%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.002 s, sync=0.001 s, total=0.005 s; sync files=0, longest=0.000 s, average=0.000 s; distance=1 kB, estimate=1 kB
+2024-09-24 00:47:53.037 IST [22920] LOG:  checkpoint starting: immediate force wait
+2024-09-24 00:47:53.039 IST [22920] LOG:  checkpoint complete: wrote 0 buffers (0.0%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.001 s, sync=0.001 s, total=0.002 s; sync files=0, longest=0.000 s, average=0.000 s; distance=0 kB, estimate=1 kB
+2024-09-24 00:47:53.493 IST [22943] pg_regress/median LOG:  temporary file: path "base/pgsql_tmp/pgsql_tmp22943.0", size 1400014
+2024-09-24 00:47:53.493 IST [22943] pg_regress/median STATEMENT:  INSERT INTO timestampvals(val)
+	SELECT TIMESTAMP 'epoch' + (i * INTERVAL '1 second')
+	FROM generate_series(0, 100000) as T(i);
+2024-09-24 00:47:53.581 IST [22913] LOG:  received fast shutdown request
+2024-09-24 00:47:53.582 IST [22913] LOG:  aborting any active transactions
+2024-09-24 00:47:53.583 IST [22913] LOG:  background worker "logical replication launcher" (PID 22925) exited with exit code 1
+2024-09-24 00:47:53.583 IST [22920] LOG:  shutting down
+2024-09-24 00:47:53.584 IST [22920] LOG:  checkpoint starting: shutdown immediate
+2024-09-24 00:47:53.597 IST [22920] LOG:  checkpoint complete: wrote 539 buffers (3.3%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.011 s, sync=0.001 s, total=0.014 s; sync files=0, longest=0.000 s, average=0.000 s; distance=6541 kB, estimate=6541 kB
+2024-09-24 00:47:53.612 IST [22913] LOG:  database system is shut down

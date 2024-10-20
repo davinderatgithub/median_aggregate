@@ -1,0 +1,13 @@
+# Compiled object files
+*.o
+*.obj
+
+# macOS system files
+.DS_Store
+
+# Executables
+*.exe
+*.out
+
+# IDE-specific files (uncomment if needed)
+.vscode/

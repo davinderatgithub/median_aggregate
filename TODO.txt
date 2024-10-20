@@ -1,0 +1,68 @@
+make PG_CONFIG=/Users/davindersingh/mywork/postgres/build_12/bin/pg_config clean
+make PG_CONFIG=/Users/davindersingh/mywork/postgres/build_12/bin/pg_config install
+make PG_CONFIG=/Users/davindersingh/mywork/postgres/build_12/bin/pg_config installcheck
+
+Some things to add in future
+
+
+1. TOASTed Data
+
+PostgreSQL automatically handles TOAST (The Oversized-Attribute Storage 
+Technique) for large data. However, when serializing, you must ensure that you 
+are serializing the actual data, not toasted pointers. The provided code assumes
+that the Datum pointers refer to in-memory varlena structures. If your data can
+be TOASTed, consider using functions like pg_detoast_datum_copy to ensure you
+have the actual data.
+
+#include "utils/toast.h"
+
+    if (is_varlena)
+    {
+        // Ensure data is detoasted
+        Datum detoasted = PointerGetDatum(pg_detoast_datum_copy(state->values[i]));
+        int32 data_length = VARSIZE_ANY(detoasted);
+        appendBinaryStringInfo(&buf, (char *) &data_length, sizeof(int32));
+        appendBinaryStringInfo(&buf, (char *) detoasted, data_length);
+    }
+
+
+2.  Versioning and Backward Compatibility
+If you anticipate changes to the MedianState structure in the future, include
+versioning information in your serialized data. This allows deserialization
+functions to handle different versions appropriately.
+
+    // Before serializing other fields, serialize a version number
+    int32 version = 1;
+    appendBinaryStringInfo(&buf, (char *) &version, sizeof(int32));
+
+
+    // Deserialize version
+    int32 version;
+    memcpy(&version, p, sizeof(int32));
+    p += sizeof(int32);
+
+    if (version > CURRENT_VERSION)
+    {
+        ereport(ERROR, (errmsg("Unsupported MedianState version")));
+    }
+
+
+3.  Error Handling
+Implement robust error handling to prevent buffer overruns and ensure data
+integrity. Check that the pointer p does not exceed the buffer's end during
+deserialization.
+
+    if (p > end)
+    {
+        ereport(ERROR, (errmsg("Malformed MedianState serialization")));
+    }
+
+
+4. Utilize parallel execution more effectivily
+It would be nice if we can know that a given transition function is processing
+the last element, with this information before passing the median state to
+finalize aggregate, we can perform sort.
+Now in final aggregate function will only have to perform k-way merge with to
+return the final result.
+
+
